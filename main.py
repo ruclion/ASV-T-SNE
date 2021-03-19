@@ -68,7 +68,8 @@ def tsne_plotter(data, label, test_data, test_label, save_png, title):
     plt.figure()
     plt.scatter(transformed_data[:, 0], transformed_data[:, 1], 30, c=label[:], cmap=plt.cm.Spectral, alpha=0.5)
     # X -> 标贝
-    plt.scatter(test_transformed_data[:6, 0], test_transformed_data[:6, 1], 30, c=test_label[:6], marker='x', cmap=plt.cm.Spectral, alpha=0.5)
+    for i in range(6):
+        plt.scatter(test_transformed_data[i, 0], test_transformed_data[i, 1], 30 + 10 * i, c=test_label[i], marker='x', cmap=plt.cm.Spectral, alpha=0.5)
     # + -> LJSpeech_sub_1
     plt.scatter(test_transformed_data[6:7, 0], test_transformed_data[6:7, 1], 30, c=test_label[6:7], marker='+', cmap=plt.cm.Spectral, alpha=0.5)
     # ^ -> LJSpeech_sub_2
@@ -77,7 +78,7 @@ def tsne_plotter(data, label, test_data, test_label, save_png, title):
     plt.scatter(test_transformed_data[8:9, 0], test_transformed_data[8:9, 1], 30, c=test_label[8:9], marker='s', cmap=plt.cm.Spectral, alpha=0.5)
     # 八角形 -> VCTK_1_sub_2
     plt.scatter(test_transformed_data[9:10, 0], test_transformed_data[9:10, 1], 30, c=test_label[9:10], marker='D', cmap=plt.cm.Spectral, alpha=0.5)
-    # 五边形 -> VCTK_1
+    # 五边形 -> VCTK_2
     plt.scatter(test_transformed_data[10:12, 0], test_transformed_data[10:12, 1], 30, c=test_label[10:12], marker='p', cmap=plt.cm.Spectral, alpha=0.5)
     plt.title(title)
     plt.savefig(save_png)
